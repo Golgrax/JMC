@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joan Mae Corbes | Portfolio</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-bg: #0a0e1a;
+            --secondary-bg: #1e293b;
+            --accent: #06b6d4;
+            --accent-hover: #0891b2;
+            --text-primary: #f8fafc;
+            --neon-blue: #00d4ff;
+            --neon-purple: #8b5cf6;
+            --neon-pink: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1e293b 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(6, 182, 212, 0.1);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Enhanced Gradients */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Glass Effect Enhanced */
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glass-effect:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
+        }
+
+        /* Navbar Enhancements */
+        .navbar {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 14, 26, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Advanced Typography */
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Morphing Button */
+        .morph-button {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease-in-out infinite;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .morph-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .morph-button:hover::before {
+            left: 100%;
+        }
+
+        .morph-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(2) {
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(3) {
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(-10px) rotate(-1deg); }
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+            transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .project-card-link:hover .project-card::before {
+            left: 100%;
+        }
+
+        .project-card-link:hover .project-card {
+            transform: translateY(-10px) scale(1.02);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
+        }
+
+        /* Neon Effects */
+        .neon-glow {
+            box-shadow:
+                0 0 5px var(--neon-blue),
+                0 0 10px var(--neon-blue),
+                0 0 20px var(--neon-blue),
+                0 0 40px var(--neon-blue);
+            animation: neon-pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon-pulse {
+            from {
+                box-shadow:
+                    0 0 5px var(--neon-blue),
+                    0 0 10px var(--neon-blue),
+                    0 0 20px var(--neon-blue),
+                    0 0 40px var(--neon-blue);
+            }
+            to {
+                box-shadow:
+                    0 0 2px var(--neon-blue),
+                    0 0 5px var(--neon-blue),
+                    0 0 10px var(--neon-blue),
+                    0 0 20px var(--neon-blue);
+            }
+        }
+
+        /* Advanced About Images */
+        .about-image-container {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .about-image:first-child:hover {
+    /* Moves the top-left image further away */
+    transform: translateX(-15px) translateY(-15px) rotate(-8deg);
+    z-index: 10;
+}
+
+.about-image:last-child:hover {
+    /* Moves the bottom-right image further away */
+    transform: translateX(15px) translateY(15px) rotate(8deg);
+    z-index: 10;
+}
+
+        .about-image:hover {
+            transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+
+        .about-image:hover::after {
+            opacity: 1;
+        }
+
+        /* Typing Animation Enhanced */
+        .typing-enhanced {
+            overflow: hidden;
+            border-right: 0.15em solid var(--neon-blue);
+            white-space: nowrap;
+            letter-spacing: 0.1em;
+            animation:
+                typing 3.5s steps(30, end),
+                blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--neon-blue); }
+        }
+
+        /* Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: var(--secondary-bg);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Background Shapes */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: var(--neon-blue);
+            animation-delay: 0s;
+        }
+
+        .bg-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            background: var(--neon-purple);
+            animation-delay: -3s;
+        }
+
+        .bg-shape:nth-child(3) {
+            bottom: 20%;
+            left: 30%;
+            width: 250px;
+            height: 250px;
+            background: var(--neon-pink);
+            animation-delay: -6s;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .project-card-link:hover .project-card {
+                transform: translateY(-5px) scale(1.01);
+            }
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            margin: 4rem 0;
+        }
+
+        /* Enhanced Icons */
+        .icon-glow {
+            transition: all 0.3s ease;
+        }
+
+        .icon-glow:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="custom-scrollbar">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="text-xl gradient-text font-mono">Loading Experience...</p>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Background Shapes -->
+    <div class="bg-shape"></div>
+    <div class="bg-shape"></div>
+    <div class="bg-shape"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full top-0 z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#hero" class="text-2xl font-bold font-mono hero-title">
+                    <span class="gradient-text">JMC.</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 transform hover:scale-105">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 transform hover:scale-105">Projects</a>
+                </div>
+                <button id="menu-open-btn" class="md:hidden text-white text-2xl transform transition-transform hover:scale-110" aria-label="Open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 glass-effect md:hidden z-50">
+            <div class="flex flex-col p-6 space-y-6">
+                <button id="menu-close-btn" class="self-end text-white text-2xl mb-4 transform transition-transform hover:scale-110" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <a href="#about" class="mobile-menu-link text-gray-300 hover:text-cyan-400 transition-all duration-300">About</a>
+                <a href="#projects" class="mobile-menu-link text-gray-300 hover:text-cyan-400 transition-all duration-300">Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 items-center gap-12">
+                    <div class="text-center lg:text-left">
+                        <p id="hero-subtext" class="text-cyan-400 text-lg mb-4 font-mono opacity-0" data-aos="fade-up" data-aos-delay="100">
+                            Hi there, my name is
+                        </p>
+                        <h1 id="hero-title" class="hero-title text-5xl md:text-7xl font-extrabold mb-4 opacity-0" data-aos="fade-up" data-aos-delay="200">
+                            <span class="gradient-text">Joan Mae Corbes</span>
+                        </h1>
+                        <div id="hero-tagline" class="text-xl md:text-2xl text-gray-400 mb-6 h-8 font-mono opacity-0" data-aos="fade-up" data-aos-delay="300">
+                            <span class="typing-enhanced">I build digital experiences.</span>
+                        </div>
+                        <p id="hero-info" class="text-lg text-gray-400 mb-2 font-mono opacity-0" data-aos="fade-up" data-aos-delay="400">
+                            BSIT 2-2 • PUP Paranaque
+                        </p>
+                        <div id="hero-button" class="mt-8 flex justify-center lg:justify-start opacity-0" data-aos="fade-up" data-aos-delay="500">
+                            <a href="#projects" class="morph-button text-slate-900 font-bold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+                                View My Work
+                            </a>
+                        </div>
+                    </div>
+                    <div id="hero-image" class="flex-shrink-0 flex justify-center lg:justify-end opacity-0" data-aos="fade-left" data-aos-delay="600">
+                        <div class="relative floating-element">
+                            <div class="w-80 h-80 rounded-full overflow-hidden border-4 border-cyan-500 neon-glow">
+                                <img src="assets/3.png" alt="Joan Mae Corbes" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- About Section -->
+        <section id="about" class="py-24" data-aos="fade-up">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 hero-title">About <span class="gradient-text">Me</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 mx-auto"></div>
+                </div>
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <!-- Image Container -->
+    <div class="flex-shrink-0 relative w-80 h-80 about-image-container" data-aos="fade-right" data-aos-delay="200">
+        <div class="about-image absolute top-0 left-0 w-60 h-72 rounded-lg overflow-hidden border-2 border-cyan-500 transform -rotate-6 shadow-2xl">
+            <img src="assets/2.png" alt="Joan Mae Corbes" class="w-full h-full object-cover">
+        </div>
+        <div class="about-image absolute bottom-0 right-0 w-60 h-72 rounded-lg overflow-hidden border-2 border-purple-500 transform rotate-6 shadow-2xl">
+            <img src="assets/1.png" alt="Joan Mae Corbes" class="w-full h-full object-cover">
+        </div>
+    </div>
+    <!-- Text Content Container -->
+    <div class="flex-1" data-aos="fade-left" data-aos-delay="400">
+        <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+            <p>I'm a passionate Information Technology student fueled by a love for problem-solving and creating beautiful, user-friendly digital experiences. I specialize in bridging the gap between design and development, crafting interfaces that are both visually stunning and highly functional.</p>
+            <p>When I'm not coding, you can find me exploring new coffee shops, reading tech blogs, or contributing to open-source projects. I'm always eager to learn new technologies and take on challenging projects. Let's build something amazing together!</p>
+
+            <!-- Facebook Icon Button -->
+            <div class="mt-8 flex justify-start">
+                <a href="https://www.facebook.com/zerepcorbesjoanmae1119" target="_blank" rel="noopener noreferrer" aria-label="My Facebook Profile">
+                    <i class="fab fa-facebook fa-2x icon-glow text-gray-400"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 bg-slate-900/20" data-aos="fade-up">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 hero-title">Class <span class="gradient-text">Projects</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 mx-auto mb-4"></div>
+                    <p class="text-gray-400 max-w-2xl mx-auto">A collection of my foundational work in web development, demonstrating key HTML, CSS, and JavaScript concepts.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Cards with enhanced animations -->
+                    <a href="projects/Clock.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-clock text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Live Digital Clock</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">A real-time digital clock built with JavaScript's Date object and updated every second using setInterval.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">JavaScript</span>
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">CSS</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample13.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-hand-pointer text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">JavaScript Events Demo</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">An interactive demonstration of various JavaScript DOM events like onclick, onblur, onkeydown, and onmouseover.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">JavaScript</span>
+                                <span class="px-2 py-1 bg-red-500/10 text-red-400 rounded">DOM Events</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample16.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-calculator text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">JS Numeric Functions</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">Explores core JavaScript numeric functions including parseInt, parseFloat, Math.round, Math.sqrt, and more.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">JavaScript</span>
+                                <span class="px-2 py-1 bg-green-500/10 text-green-400 rounded">Math API</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample14.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-message text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Core JS Dialogs</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">Demonstrates fundamental browser interactions using alert(), confirm(), prompt(), and document.write().</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">JavaScript</span>
+                                <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded">Browser API</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample12.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-file-pen text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">HTML Student Form</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">A comprehensive HTML form showcasing various input types, including text, select, checkbox, and radio buttons.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">HTML</span>
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">CSS Forms</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Frame_AB.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-window-maximize text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">HTML Frames Demo</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">A classic example of using iframes to embed and display multiple HTML documents within a single parent page.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">HTML</span>
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">iframe</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample8.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="700">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-table-cells text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Advanced Table Layouts</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">Demonstrates `rowspan` and `colspan` attributes to create complex tables with merged cells.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">HTML</span>
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">Tables</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample7.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="800">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-palette text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Styled Data Table</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">A simple and clean data table with custom styling for headers, cells, and colored backgrounds.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">HTML</span>
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">CSS</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample10.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="900">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-anchor text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Internal Page Linking</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">A poetry page using anchor links to navigate between different sections within the same document.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">HTML</span>
+                                <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded">Navigation</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample9.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="1000">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-link text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">CSS Link Styling</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">Explores styling link states with CSS pseudo-classes: :link, :visited, :hover, and :active.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">CSS</span>
+                                <span class="px-2 py-1 bg-pink-500/10 text-pink-400 rounded">Pseudo-class</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample1.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="1100">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-list-ul text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Styled HTML Lists</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">Examples of styled ordered and unordered lists, demonstrating various `list-style-types` and nesting.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">HTML</span>
+                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">CSS</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="projects/Sample3.html" target="_blank" rel="noopener noreferrer" class="project-card-link" data-aos="zoom-in" data-aos-delay="1200">
+                        <div class="project-card h-full rounded-xl p-6 relative overflow-hidden flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <i class="fa-solid fa-person-running text-3xl text-cyan-400 icon-glow"></i>
+                                <div class="text-cyan-400 font-semibold text-sm">View Project <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Marquee Animation</h3>
+                            <p class="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">A demonstration of the classic (and now obsolete) `<marquee>` tag for creating scrolling text animations.</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                                <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">HTML</span>
+                                <span class="px-2 py-1 bg-gray-500/10 text-gray-400 rounded">Legacy</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800/50 bg-slate-900/30" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500">© 2024 Joan Mae Corbes. Built with passion and a lot of coffee. ☕</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+
+            // Loading Screen
+            window.addEventListener('load', () => {
+                const loading = document.getElementById('loading');
+                setTimeout(() => {
+                    loading.style.opacity = '0';
+                    setTimeout(() => {
+                        loading.style.display = 'none';
+                    }, 500);
+                }, 1500);
+            });
+
+            // Initialize Particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 20,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: ['#06b6d4', '#8b5cf6', '#ec4899']
+                    },
+                    shape: {
+                        type: 'square',
+                        stroke: {
+                            width: 0,
+                            color: '#000000'
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 300,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#06b6d4',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'right',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: true,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'repulse'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        repulse: {
+                            distance: 100,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+
+            // GSAP Animations
+            gsap.registerPlugin(ScrollTrigger);
+
+            const navbar = document.querySelector('.navbar');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenBtn = document.getElementById('menu-open-btn');
+            const menuCloseBtn = document.getElementById('menu-close-btn');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+            // Mobile Menu
+            const toggleMobileMenu = () => mobileMenu.classList.toggle('open');
+            menuOpenBtn.addEventListener('click', toggleMobileMenu);
+            menuCloseBtn.addEventListener('click', toggleMobileMenu);
+            mobileMenuLinks.forEach(link => link.addEventListener('click', toggleMobileMenu));
+
+            // Navbar Scroll Effect
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+
+            // Enhanced Hero Animation
+            const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
+
+            gsap.set('#hero-image', { x: 100, opacity: 0 });
+            gsap.set('#hero-subtext, #hero-title, #hero-tagline, #hero-info, #hero-button', {
+                y: 30,
+                opacity: 0
+            });
+
+            heroTimeline
+                .to('#hero-subtext', { y: 0, opacity: 1, delay: 0.3 })
+                .to('#hero-title', { y: 0, opacity: 1 }, "-=0.6")
+                .to('#hero-tagline', { y: 0, opacity: 1 }, "-=0.6")
+                .to('#hero-info', { y: 0, opacity: 1 }, "-=0.7")
+                .to('#hero-button', { y: 0, opacity: 1 }, "-=0.7")
+                .to('#hero-image', { x: 0, opacity: 1, duration: 1.2 }, 0.8);
+
+            // Parallax Effects
+            gsap.to('.bg-shape:nth-child(1)', {
+                y: -100,
+                rotation: 180,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            gsap.to('.bg-shape:nth-child(2)', {
+                y: 50,
+                rotation: -90,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            gsap.to('.bg-shape:nth-child(3)', {
+                y: -80,
+                rotation: 270,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // About Images Parallax
+            gsap.to('.about-image:first-child', {
+                y: -60,
+                rotation: 2,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#about',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            gsap.to('.about-image:last-child', {
+                y: 40,
+                rotation: -2,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#about',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // Text Reveal Animation
+            gsap.utils.toArray('h2, h3').forEach(heading => {
+                gsap.fromTo(heading,
+                    {
+                        backgroundSize: '0% 100%',
+                        backgroundImage: 'linear-gradient(135deg, #06b6d4, #8b5cf6)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'left center',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent'
+                    },
+                    {
+                        backgroundSize: '100% 100%',
+                        duration: 1.2,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: heading,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            // Smooth Scrolling for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        gsap.to(window, {
+                            duration: 1.5,
+                            scrollTo: {
+                                y: target,
+                                offsetY: 80
+                            },
+                            ease: 'power2.inOut'
+                        });
+                    }
+                });
+            });
+
+            // Magnetic Effect for Buttons
+            document.querySelectorAll('.morph-button, .project-card-link').forEach(element => {
+                element.addEventListener('mousemove', (e) => {
+                    const rect = element.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    gsap.to(element, {
+                        x: x * 0.1,
+                        y: y * 0.1,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    gsap.to(element, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+
+            // Dynamic Text Color Change
+            const observerOptions = {
+                threshold: 0.7
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const section = entry.target.id;
+                        const navLinks = document.querySelectorAll(`a[href="#${section}"]`);
+
+                        // Remove active class from all nav links
+                        document.querySelectorAll('nav a').forEach(link => {
+                            link.classList.remove('text-cyan-400');
+                            link.classList.add('text-gray-300');
+                        });
+
+                        // Add active class to current section's nav link
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-gray-300');
+                            link.classList.add('text-cyan-400');
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections
+            document.querySelectorAll('section[id]').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Project Cards Enhanced Interaction
+            document.querySelectorAll('.project-card-link').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card.querySelector('.project-card'), {
+                        rotationY: 5,
+                        rotationX: 2,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card.querySelector('.project-card'), {
+                        rotationY: 0,
+                        rotationX: 0,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
